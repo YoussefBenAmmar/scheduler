@@ -28,6 +28,21 @@ export default function useApplicationData(){
     });
   }, []);
 
+
+  const freeSpots = (state, appointments) => {
+    const appointmentId = state.days.filter((day) => day.name === state.day);
+    const appointmentsToday = appointmentId[0].appointments;
+
+    const emptySpots = appointmentsToday.reduce((count, app) => {
+      if (!appointments[app].interview) {
+        return count + 1;
+      }
+      return count;
+    }, 0);
+    
+    return emptySpots;
+  }
+
   ///*** Function to set current day */
 
   const setDay = day => setState({ ...state, day });
@@ -50,9 +65,15 @@ export default function useApplicationData(){
         [id]: appointment
       };
 
+      const days = [...state.days];
+      const daysIndex = state.days.findIndex((day) => day.appointments.includes(id));
+      const spots = freeSpots(state, appointments);
+      const dayUpdate = { ...days[daysIndex], spots,};
+      days[daysIndex] = dayUpdate;
       setState({
         ...state,
-        appointments
+        appointments,
+        days
       });
     }
     );
@@ -74,9 +95,17 @@ export default function useApplicationData(){
       [id]: appointment,
     };
 
+    const days = [...state.days];
+    const daysIndex = state.days.findIndex((day) => day.appointments.includes(id));
+    const spots = freeSpots(state, appointments);
+    const dayUpdate = { ...days[daysIndex], spots,};
+    days[daysIndex] = dayUpdate;
+
+
       setState({
         ...state,
-        appointments
+        appointments,
+        days
       });
     });    
   }

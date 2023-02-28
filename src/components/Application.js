@@ -8,6 +8,7 @@ import axios from "axios";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 import useVisualMode from "hooks/useVisualMode";
 import useApplicationData from "hooks/useApplicationData";
+import PropTypes from 'prop-types'
 
 
 
