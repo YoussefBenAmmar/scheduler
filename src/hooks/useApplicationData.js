@@ -14,9 +14,9 @@ export default function useApplicationData(){
 
   useEffect(() => {
     Promise.all([
-      axios.get(`http://localhost:8001/api/days`),
-      axios.get(`http://localhost:8001/api/appointments`),
-      axios.get(`http://localhost:8001/api/interviewers`),
+      axios.get(`/api/days`),
+      axios.get(`/api/appointments`),
+      axios.get(`/api/interviewers`),
     ]).then((all) => {
       setState(prev => ({
         ...prev,
@@ -96,10 +96,10 @@ export default function useApplicationData(){
     };
 
     const days = [...state.days];
-    const daysIndex = state.days.findIndex((day) => day.appointments.includes(id));
+    const currentDayIndex = state.days.findIndex((day) => day.appointments.includes(id));
     const spots = freeSpots(state, appointments);
-    const dayUpdate = { ...days[daysIndex], spots,};
-    days[daysIndex] = dayUpdate;
+    const dayUpdate = { ...days[currentDayIndex], spots,};
+    days[currentDayIndex] = dayUpdate;
 
 
       setState({
