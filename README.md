@@ -6,6 +6,13 @@ THe INterview Scheduler is a SPA that allows the user, a student, to book interv
 
 This project was built using React, Storybook, Axios, and went through some integration testing and end-to-end testing among other things. This was a fantastic learning experience, as it allowed to see and use some new tools that seem to be very powerful, and will be very helpful in the future. I've found the React environment to be quite nice.
 
+## Final Product
+
+!["A Tuesday on the app"](https://github.com/YoussefBenAmmar/scheduler/blob/master/docs/Tuesday.png?raw=true)
+!["Deleting an appointment"](https://github.com/YoussefBenAmmar/scheduler/blob/master/docs/deleting-appointment.png?raw=true)
+!["Adding a new appointment"](https://github.com/YoussefBenAmmar/scheduler/blob/master/docs/saving-appointment.png?raw=true)
+
+
 ## Setup
 
 Install dependencies with `npm install`.
